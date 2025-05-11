@@ -71,13 +71,20 @@ fun DetailScreen(
                 },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(Icons.Filled.ArrowBack, contentDescription = stringResource(R.string.kembali))
+                        Icon(
+                            Icons.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.kembali)
+                        )
                     }
                 },
                 actions = {
                     IconButton(onClick = {
                         if (namaObjekWisata.isBlank() || tanggalKeberangkatan.isBlank() || estimasiBiaya.isBlank()) {
-                            Toast.makeText(context, context.getString(R.string.semua_field_harus_diisi), Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                context,
+                                context.getString(R.string.semua_field_harus_diisi),
+                                Toast.LENGTH_SHORT
+                            ).show()
                             return@IconButton
                         }
                         val destinasiToSave = Destinasi(
@@ -93,11 +100,17 @@ fun DetailScreen(
                         }
                         navController.popBackStack()
                     }) {
-                        Icon(Icons.Filled.Done, contentDescription = stringResource(R.string.simpan))
+                        Icon(
+                            Icons.Filled.Done,
+                            contentDescription = stringResource(R.string.simpan)
+                        )
                     }
                     if (isEditMode && currentDestinasi != null) {
                         IconButton(onClick = { showDeleteDialog = true }) {
-                            Icon(Icons.Filled.Delete, contentDescription = stringResource(R.string.hapus))
+                            Icon(
+                                Icons.Filled.Delete,
+                                contentDescription = stringResource(R.string.hapus)
+                            )
                         }
                     }
                 },
@@ -126,12 +139,15 @@ fun DetailScreen(
             DisplayAlertDialog(
                 onDismissRequest = { showDeleteDialog = false },
                 onConfirmation = {
-                    viewModel.deleteDestinasi(currentDestinasi!!)
+                    viewModel.softDeleteDestinasi(currentDestinasi!!)
                     showDeleteDialog = false
                     navController.popBackStack()
                 },
                 dialogTitle = stringResource(R.string.konfirmasi_hapus),
-                dialogText = stringResource(R.string.apakah_yakin_hapus_destinasi, currentDestinasi!!.namaObjekWisata)
+                dialogText = stringResource(
+                    R.string.apakah_yakin_hapus_destinasi,
+                    currentDestinasi!!.namaObjekWisata
+                )
             )
         }
     }

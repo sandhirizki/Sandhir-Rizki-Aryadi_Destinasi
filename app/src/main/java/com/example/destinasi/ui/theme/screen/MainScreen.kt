@@ -71,9 +71,13 @@ fun MainScreen(navController: NavHostController, viewModel: MainViewModel) {
             TopAppBar(
                 title = { Text(stringResource(R.string.app_name_main)) },
                 actions = {
+                    IconButton(onClick = { navController.navigate(Screen.RecycleBin.route) }) {
+                        Icon(Icons.Default.Delete, contentDescription = "Recycle Bin")
+                    }
                     IconButton(onClick = {
                         viewModel.saveLayoutPreference(!isListView)
-                    }) {
+                    })
+                    {
                         Icon(
                             imageVector = if (isListView) Icons.Default.GridOn else Icons.AutoMirrored.Filled.ViewList,
                             contentDescription = if (isListView) "Switch to Grid" else "Switch to List"
@@ -92,12 +96,19 @@ fun MainScreen(navController: NavHostController, viewModel: MainViewModel) {
             FloatingActionButton(onClick = {
                 navController.navigate(Screen.Detail.withArgs(null))
             }) {
-                Icon(Icons.Filled.Add, contentDescription = stringResource(R.string.tambah_destinasi))
+                Icon(
+                    Icons.Filled.Add,
+                    contentDescription = stringResource(R.string.tambah_destinasi)
+                )
             }
         }
     ) { paddingValues ->
         if (destinasiList.isEmpty()) {
-            EmptyState(modifier = Modifier.padding(paddingValues).fillMaxSize())
+            EmptyState(
+                modifier = Modifier
+                    .padding(paddingValues)
+                    .fillMaxSize()
+            )
         } else {
             if (isListView) {
                 DestinasiList(destinasiList, navController, Modifier.padding(paddingValues))
@@ -109,9 +120,15 @@ fun MainScreen(navController: NavHostController, viewModel: MainViewModel) {
 }
 
 @Composable
-fun DestinasiList(destinasiList: List<Destinasi>, navController: NavHostController, modifier: Modifier) {
+fun DestinasiList(
+    destinasiList: List<Destinasi>,
+    navController: NavHostController,
+    modifier: Modifier
+) {
     LazyColumn(
-        modifier = modifier.fillMaxSize().padding(horizontal = 8.dp),
+        modifier = modifier
+            .fillMaxSize()
+            .padding(horizontal = 8.dp),
         contentPadding = PaddingValues(bottom = 72.dp)
     ) {
         items(destinasiList, key = { it.id }) { destinasi ->
@@ -124,10 +141,16 @@ fun DestinasiList(destinasiList: List<Destinasi>, navController: NavHostControll
 }
 
 @Composable
-fun DestinasiGrid(destinasiList: List<Destinasi>, navController: NavHostController, modifier: Modifier) {
+fun DestinasiGrid(
+    destinasiList: List<Destinasi>,
+    navController: NavHostController,
+    modifier: Modifier
+) {
     LazyVerticalGrid(
         columns = GridCells.Adaptive(minSize = 150.dp),
-        modifier = modifier.fillMaxSize().padding(4.dp),
+        modifier = modifier
+            .fillMaxSize()
+            .padding(4.dp),
         contentPadding = PaddingValues(bottom = 72.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -148,7 +171,13 @@ fun DestinasiListItem(destinasi: Destinasi, onItemClick: () -> Unit) {
             .clickable { onItemClick() }
             .padding(16.dp)
     ) {
-        Text(destinasi.namaObjekWisata, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, maxLines = 1, overflow = TextOverflow.Ellipsis)
+        Text(
+            destinasi.namaObjekWisata,
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
+        )
         Spacer(Modifier.height(4.dp))
         Text(destinasi.tanggalKeberangkatan, style = MaterialTheme.typography.bodyMedium)
         Text(destinasi.estimasiBiaya, style = MaterialTheme.typography.bodyMedium)
@@ -171,14 +200,21 @@ fun DestinasiGridItem(destinasi: Destinasi, onItemClick: () -> Unit) {
                 .heightIn(min = 120.dp),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
-            Text(destinasi.namaObjekWisata, style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold, maxLines = 2, overflow = TextOverflow.Ellipsis)
+            Text(
+                destinasi.namaObjekWisata,
+                style = MaterialTheme.typography.titleSmall,
+                fontWeight = FontWeight.Bold,
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis
+            )
             Spacer(Modifier.height(6.dp))
             Column {
                 Text(destinasi.tanggalKeberangkatan, style = MaterialTheme.typography.bodySmall)
                 Text(destinasi.estimasiBiaya, style = MaterialTheme.typography.bodySmall)
             }
             IconButton(onClick = { showDialog = true }) {
-                Icon(Icons.Default.Delete, contentDescription = "Hapus")
+                Icon(Icons.Default.Delete,
+                    contentDescription = stringResource(R.string.hapus))
             }
             if (showDialog) {
                 DeleteDialog(

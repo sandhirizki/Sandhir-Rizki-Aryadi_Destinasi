@@ -1,4 +1,5 @@
 package com.example.destinasi.navigation
+
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -11,6 +12,7 @@ import com.example.destinasi.viewmodel.DetailViewModel
 import com.example.destinasi.viewmodel.MainViewModel
 import com.example.destinasi.ui.theme.screen.DetailScreen
 import com.example.destinasi.ui.theme.screen.MainScreen
+import com.example.destinasi.ui.theme.screen.RecycleBin
 import com.example.destinasi.util.ViewModelFactory
 
 sealed class Screen(val route: String) {
@@ -24,6 +26,7 @@ sealed class Screen(val route: String) {
             }
         }
     }
+    object RecycleBin : Screen("recycle_bin")
 }
 
 const val DESTINASI_ID_ARG = "destinasiId"
@@ -55,5 +58,10 @@ fun AppNavigation(navController: NavHostController) {
                 destinasiId = if (destinasiId == -1L) null else destinasiId
             )
         }
+        composable(Screen.RecycleBin.route) {
+            val mainViewModel: MainViewModel = viewModel(factory = factory)
+            RecycleBin(navController = navController, viewModel = mainViewModel)
+        }
+
     }
 }

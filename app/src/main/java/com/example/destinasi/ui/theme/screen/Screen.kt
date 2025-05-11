@@ -11,4 +11,6 @@ sealed class Screen(val route: String) {
             }
         }
     }
+
+    object RecycleBin : Screen("recycle_bin")
 }

@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.destinasi.database.DestinasiDao
 import com.example.destinasi.model.Destinasi
 import com.example.destinasi.util.SettingsDataStore
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
@@ -16,7 +17,8 @@ class MainViewModel(
     private val settingsDataStore: SettingsDataStore
 ) : ViewModel() {
 
-    val destinasiList: StateFlow<List<Destinasi>> = destinasiDao.getAllDestinasi()
+    val destinasiList: Flow<List<Destinasi>> = destinasiDao.getDestinasiList()
+
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5000),
@@ -36,5 +38,17 @@ class MainViewModel(
             settingsDataStore.saveLayoutPreference(isListView)
         }
     }
+
+    val recycleBinList: StateFlow<List<Destinasi>> = destinasiDao.getDeletedDestinasi()
+        .stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
+
+
+    fun restoreDestinasi(destinasi: Destinasi) {
+        viewModelScope.launch {
+            destinasiDao.updateDestinasi(destinasi.copy(isDeleted = false))
+        }
+    }
+
+
 
 }

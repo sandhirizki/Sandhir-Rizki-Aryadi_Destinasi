@@ -30,4 +30,12 @@ class DetailViewModel(private val destinasiDao: DestinasiDao) : ViewModel() {
             destinasiDao.delete(destinasi)
         }
     }
+    val destinasiList: Flow<List<Destinasi>> = destinasiDao.getDestinasiList()
+
+    fun softDeleteDestinasi(destinasi: Destinasi) {
+        val updated = destinasi.copy(isDeleted = true)
+        viewModelScope.launch {
+            destinasiDao.update(updated)
+        }
+    }
 }
