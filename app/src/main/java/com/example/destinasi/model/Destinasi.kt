@@ -9,5 +9,6 @@ data class Destinasi(
     val id: Long = 0L,
     val namaObjekWisata: String,
     val tanggalKeberangkatan: String,
-    val estimasiBiaya: String
+    val estimasiBiaya: String,
+    val isDeleted: Boolean = false
 )

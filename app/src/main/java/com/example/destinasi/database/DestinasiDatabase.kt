@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.destinasi.model.Destinasi
 
-@Database(entities = [Destinasi::class], version = 1, exportSchema = false)
+@Database(entities = [Destinasi::class], version = 2, exportSchema = false)
 abstract class DestinasiDatabase : RoomDatabase() {
     abstract val destinasiDao: DestinasiDao
 

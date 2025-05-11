@@ -13,9 +13,11 @@ androidxLifecycleViewmodelCompose = "2.9.0"
 androidxRoom = "2.7.1"
 androidxDatastorePreferences = "1.1.6"
 kspPlugin = "2.0.0-1.0.24"
+materialIconsExtended = "<versi_compose>"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }

@@ -25,4 +25,13 @@ interface DestinasiDao {
 
     @Query("SELECT * FROM destinasi WHERE id = :id")
     fun getDestinasiById(id: Long): Flow<Destinasi?>
+
+    @Query("SELECT * FROM destinasi WHERE isDeleted = 0")
+    fun getDestinasiList(): Flow<List<Destinasi>>
+
+    @Query("SELECT * FROM destinasi WHERE isDeleted = 1")
+    fun getDeletedDestinasi(): Flow<List<Destinasi>>
+
+    @Update
+    suspend fun updateDestinasi(destinasi: Destinasi)
 }
