@@ -1,3 +1,25 @@
 <resources>
-    <string name="app_name">Destinasi</string>
+    <string name="app_name">List Destinasi</string>
+    <string name="app_name_main">Daftar Destinasi</string>
+    <string name="tambah_destinasi">Tambah Destinasi</string>
+    <string name="ubah_destinasi">Ubah Destinasi</string>
+    <string name="tambah_destinasi_baru">Tambah Destinasi Baru</string>
+    <string name="simpan">Simpan</string>
+    <string name="hapus">Hapus</string>
+    <string name="kembali">Kembali</string>
+    <string name="nama_objek_wisata">Nama Objek Wisata</string>
+    <string name="tanggal_keberangkatan_yyyy_mm_dd">Tanggal Keberangkatan (YYYY-MM-DD)</string>
+    <string name="estimasi_biaya_rp">Estimasi Biaya (Rp)</string>
+    <string name="semua_field_harus_diisi">Semua field harus diisi.</string>
+    <string name="belum_ada_destinasi">Belum ada destinasi.\nKlik tombol + untuk menambah.</string>
+    <string name="konfirmasi_hapus">Konfirmasi Hapus</string>
+    <string name="apakah_yakin_hapus_destinasi">Apakah Anda yakin ingin menghapus destinasi "%1$s"?</string>
+    <string name="hapus_action">Hapus</string>
+    <string name="batal_action">Batal</string>
+    <string name="tampilan_list">Tampilan List</string>
+    <string name="tampilan_grid">Tampilan Grid</string>
+    <string name="label_tanggal">Tgl: %1$s</string>
+    <string name="label_biaya">Biaya: Rp %1$s</string>
+    <string name="label_tanggal_singkat">Tgl: %1$s</string>
+    <string name="label_biaya_singkat">Rp %1$s</string>
 </resources>
