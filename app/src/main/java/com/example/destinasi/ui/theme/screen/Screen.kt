@@ -11,5 +11,4 @@ sealed class Screen(val route: String) {
             }
         }
     }
-    // Tambahkan screen lain jika ada
 }

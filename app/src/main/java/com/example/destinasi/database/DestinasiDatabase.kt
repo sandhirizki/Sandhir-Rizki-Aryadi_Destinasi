@@ -23,7 +23,7 @@ abstract class DestinasiDatabase : RoomDatabase() {
                         DestinasiDatabase::class.java,
                         "destinasi_database"
                     )
-                        .fallbackToDestructiveMigration() // Hati-hati dengan ini di production
+                        .fallbackToDestructiveMigration(false)
                         .build()
                     INSTANCE = instance
                 }

@@ -53,7 +53,6 @@ fun DetailScreen(
                 }
             }
         } else {
-            // Reset fields for new entry
             namaObjekWisata = ""
             tanggalKeberangkatan = ""
             estimasiBiaya = ""
@@ -82,7 +81,7 @@ fun DetailScreen(
                             return@IconButton
                         }
                         val destinasiToSave = Destinasi(
-                            id = currentDestinasi?.id ?: 0L, // Use current id or 0 for new
+                            id = currentDestinasi?.id ?: 0L,
                             namaObjekWisata = namaObjekWisata.trim(),
                             tanggalKeberangkatan = tanggalKeberangkatan.trim(),
                             estimasiBiaya = estimasiBiaya.trim()
@@ -170,10 +169,9 @@ fun FormDestinasi(
             modifier = Modifier.fillMaxWidth(),
             singleLine = true,
             keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Ascii, // Atau Number jika format ketat
+                keyboardType = KeyboardType.Ascii,
                 imeAction = ImeAction.Next
             )
-            // Pertimbangkan DatePicker untuk UX yang lebih baik (Aspek Kebaruan)
         )
         OutlinedTextField(
             value = estimasiBiaya,

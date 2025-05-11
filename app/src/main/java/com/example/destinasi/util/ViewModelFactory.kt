@@ -11,7 +11,7 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         val db = DestinasiDatabase.getInstance(context)
-        val settingsDataStore = SettingsDataStore(context) // Inisialisasi SettingsDataStore
+        val settingsDataStore = SettingsDataStore(context)
 
         if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
             return MainViewModel(db.destinasiDao, settingsDataStore) as T
