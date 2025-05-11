@@ -36,4 +36,5 @@ class MainViewModel(
             settingsDataStore.saveLayoutPreference(isListView)
         }
     }
+
 }
