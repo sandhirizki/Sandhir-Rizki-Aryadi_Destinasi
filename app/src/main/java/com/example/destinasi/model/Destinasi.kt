@@ -1,9 +1,13 @@
 package com.example.destinasi.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "destinasi")
 data class Destinasi(
-    val id: Long = 0L, // Default value untuk Room
+    @PrimaryKey(autoGenerate = true)
+    val id: Long = 0L,
     val namaObjekWisata: String,
     val tanggalKeberangkatan: String,
-    val estimasiBiaya: String // Atau Double
+    val estimasiBiaya: String
 )
-
